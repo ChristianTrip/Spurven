@@ -16,9 +16,9 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/{id}")
-    public User getUser(@PathVariable int id) {
-        return userService.getUserById(id);
+    @GetMapping("/{username}")
+    public User getUser(@PathVariable String username) {
+        return userService.getUserById(username);
     }
 
     @GetMapping("/")
@@ -26,9 +26,9 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @PutMapping("/{id}")
-    public User editUser(@RequestBody User user, @PathVariable int id){
-        return userService.editUser(user, id);
+    @PutMapping("/{username}")
+    public User editUser(@RequestBody User user, @PathVariable String username){
+        return userService.editUser(user, username);
     }
 
 }
