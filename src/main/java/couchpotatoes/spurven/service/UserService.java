@@ -17,20 +17,19 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User getUserById(int id) {
-        User user = userRepository.findById(id).
+    public User getUserById(String username) {
+        return userRepository.findById(username).
                 orElseThrow(() -> new ResponseStatusException
-                        (HttpStatus.NOT_FOUND, "User with id: " + id + ", could not be found"));
-        return user;
+                        (HttpStatus.NOT_FOUND, "User with username: " + username + ", could not be found"));
     }
 
     public List<User> getAllUsers(){
         return userRepository.findAll();
     }
 
-    public User editUser(User body, int id){
-        User user = getUserById(id);
-        user.setName(body.getName());
+    public User editUser(User body, String username){
+        User user = getUserById(username);
+        user.setUsername(body.getUsername());
         return userRepository.save(user);
     }
 
