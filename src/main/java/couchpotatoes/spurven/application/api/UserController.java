@@ -1,13 +1,14 @@
-package couchpotatoes.spurven.api;
+package couchpotatoes.spurven.application.api;
 
-import couchpotatoes.spurven.entity.User;
-import couchpotatoes.spurven.service.UserService;
+import couchpotatoes.spurven.application.entity.User;
+import couchpotatoes.spurven.application.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("users")
+@CrossOrigin
 public class UserController {
 
     private final UserService userService;

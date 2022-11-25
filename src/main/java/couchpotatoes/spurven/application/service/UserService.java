@@ -1,7 +1,7 @@
-package couchpotatoes.spurven.service;
+package couchpotatoes.spurven.application.service;
 
-import couchpotatoes.spurven.entity.User;
-import couchpotatoes.spurven.repository.UserRepository;
+import couchpotatoes.spurven.application.entity.User;
+import couchpotatoes.spurven.application.repository.UserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
