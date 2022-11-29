@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 @ToString
 @AllArgsConstructor
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "DISCRIMINATOR_TYPE")
 public class UserWithRoles implements UserDetails {
 
@@ -33,14 +33,14 @@ public class UserWithRoles implements UserDetails {
     private static final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Id
-    @Column(nullable = false,length = 50,unique = true)
+    @Column(nullable = false,length = 50, unique = true)
     String username;
 
     //60 = length of a bcrypt encoded password
     @Column(nullable = false, length = 60)
     String password;
 
-    private boolean enabled= true;
+    private boolean enabled = true;
 
     @CreationTimestamp
     private LocalDateTime created;
