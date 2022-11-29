@@ -5,11 +5,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class SpurvenApplicationTests {
-
 /*
 	@Test
 	void contextLoads() {
 	}
 */
-
 }
