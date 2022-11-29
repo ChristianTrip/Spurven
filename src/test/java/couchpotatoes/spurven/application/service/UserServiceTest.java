@@ -2,7 +2,6 @@ package couchpotatoes.spurven.application.service;
 
 import couchpotatoes.spurven.application.entity.User;
 import couchpotatoes.spurven.application.repository.UserRepository;
-import couchpotatoes.spurven.security.entity.UserWithRoles;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,7 +14,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
 
 @ExtendWith(MockitoExtension.class)
 class UserServiceTest {
@@ -38,7 +36,7 @@ class UserServiceTest {
         u1.setUsername("charlesdarwin");
         Mockito.when(userRepo.findById("charlesdarwin")).thenReturn(Optional.of(u1));
 
-        UserWithRoles foundUser = userServ.getUserById("charlesdarwin");
+        User foundUser = userServ.getUserById("charlesdarwin");
         assertEquals("charlesdarwin",foundUser.getUsername());
 
     }
@@ -58,6 +56,5 @@ class UserServiceTest {
 
     @Test
     void editUser() {
-
     }
 }
