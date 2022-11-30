@@ -24,16 +24,34 @@ Read = Get.
 Update = PUT.
 Delete = Delete.
 
-## Login
-| Method | Url               | Description | Sample Valid Request Body |
-|--------|-------------------|-------------|---------------------------|
-| GET    | /Login            | Get all     |                           |
-| GET    | /Login/{Login_id} | Get all     |                           |
-| POST   | /Login            | Create      | Ingen Create              |
-| PUT    | /Login/{Login_id} | Update      |                           |
-| DELETE | /Login/{Login_id} | Delete      | Ingen Delete              |
+## users
+| Method    | Url                  | Description | Sample Valid Request Body |
+|-----------|----------------------|-------------|---------------------------|
+| GET       | users                | Get all     |                           |
+| GET       | /username/{username} | Get all     |                           |
+| POST      |                      | Create      | Ingen Create (POST)       |
+| PUT       | /username/{username} | Update      |                           |
+| DELETE    |                      | Delete      | Ingen Delete              |
+|           |                      |             |                           |
+| TEST      | Postman              |             |                           |
+| Unit test | UserService          |             |                           |
+| Unit test | UserWithRoles        |             |                           |
+| Unit test |                      |             |                           |
 
 
+
+## contact
+| Method     | Url                   | Description | Sample Valid Request Body |
+|------------|-----------------------|-------------|---------------------------|
+| GET        | contacts              | Get all     |                           |
+| GET        | /contact/{contact_id} | Get all     |                           |
+| POST       | /contact/{contact_id} | Create      |                           |
+| PUT        | /contact/{contact_id} | Update      |                           |
+| DELETE     | /contact/{contact_id} | Delete      |                           |
+|            |                       |             |                           |
+| TEST       | Postman               |             |                           |
+| Unit test  | ContactService        |             |                           |
+| Unit test  | ContactRepository     |             |                           |
 
 
 
