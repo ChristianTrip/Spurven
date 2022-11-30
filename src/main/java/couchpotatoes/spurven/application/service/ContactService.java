@@ -32,7 +32,6 @@ public class ContactService {
         contact.setName(body.getName());
         contact.setPhone(body.getPhone());
         contact.setEmail(body.getEmail());
-        contact.setAddress(body.getAddress());
         return contactRepository.save(contact);
     }
     public String deleteContact(int id) {

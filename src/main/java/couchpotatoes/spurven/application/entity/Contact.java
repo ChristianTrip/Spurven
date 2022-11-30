@@ -25,11 +25,10 @@ public class Contact {
     @Column(length = 255,nullable = false)
     private String name;
     @Column(length = 255,nullable = false)
+    private String phone;
+    @Column(length = 255,nullable = false)
     private String email;
-    @Column(length = 255,nullable = false)
-    private int phone;
-    @Column(length = 255,nullable = false)
-    private String address;
+
     //---------------Fields / attribute.
 
 
