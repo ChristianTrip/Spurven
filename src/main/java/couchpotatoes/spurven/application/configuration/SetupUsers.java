@@ -1,5 +1,6 @@
 package couchpotatoes.spurven.application.configuration;
 
+import couchpotatoes.spurven.application.entity.User;
 import couchpotatoes.spurven.application.repository.UserRepository;
 import couchpotatoes.spurven.security.entity.Role;
 import couchpotatoes.spurven.security.entity.UserWithRoles;
@@ -31,6 +32,21 @@ public class SetupUsers implements ApplicationRunner {
         System.out.println("**** ** ON YOUR REMOTE DATABASE                 ******************************");
         System.out.println("******************************************************************************");
 
+
+        User newUser1 = new User("hjorten", passwordUsedByAll, "Andreas", "Hjort", "andreas.hjort28@gmail.com", "20 87 67 07");
+        User newUser2 = new User("svendSvedig", passwordUsedByAll, "Svend Emil Gude Svendsen", "Emil Gude Svendsen", "svend.gude@gmail.com", "29 29 00 05");
+        User newUser3 = new User("chrisK", passwordUsedByAll, "Christoffer", "Kristensen", "Christoffer.kristensen98@gmail.com", "29 89 15 15");
+        User newUser4 = new User("gurd", passwordUsedByAll, "Sigurd", "Bang", "sigurdbang2@gmail.com", "51 94 73 74");
+        newUser1.addRole(Role.ADMIN);
+        newUser2.addRole(Role.ADMIN);
+        newUser3.addRole(Role.ADMIN);
+        newUser4.addRole(Role.ADMIN);
+
+        userRepository.save(newUser1);
+        userRepository.save(newUser2);
+        userRepository.save(newUser3);
+        userRepository.save(newUser4);
+
         UserWithRoles user1 = new UserWithRoles("hjorten", passwordUsedByAll);
         UserWithRoles user2 = new UserWithRoles("svendSvedig", passwordUsedByAll);
         UserWithRoles user3 = new UserWithRoles("chrisK", passwordUsedByAll);
@@ -45,6 +61,7 @@ public class SetupUsers implements ApplicationRunner {
         userWithRolesRepository.save(user4);
 
          */
+
     }
 
 }
