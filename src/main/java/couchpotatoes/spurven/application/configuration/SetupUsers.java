@@ -24,6 +24,7 @@ public class SetupUsers implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) {
+        /*
         System.out.println("******************************************************************************");
         System.out.println("******* NEVER  COMMIT/PUSH CODE WITH DEFAULT CREDENTIALS FOR REAL ************");
         System.out.println("******* REMOVE THIS BEFORE DEPLOYMENT, AND SETUP DEFAULT USERS DIRECTLY  *****");
@@ -42,6 +43,8 @@ public class SetupUsers implements ApplicationRunner {
         userWithRolesRepository.save(user2);
         userWithRolesRepository.save(user3);
         userWithRolesRepository.save(user4);
+
+         */
     }
 
 }
