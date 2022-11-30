@@ -23,7 +23,7 @@ public class ContactController {
         return contactService.getAllContacts();
     }
 
-    @GetMapping("/{contact}") //--get a Contact by by /1 (READ) (User).
+    @GetMapping("/{id}") //--get a Contact by by /1 (READ) (User).
     public Contact getContact(@PathVariable int id){
         return contactService.getContact(id);
     }
@@ -33,14 +33,13 @@ public class ContactController {
         return contactService.createContact(contact);
     }
 
-    @PutMapping("/{contact}") //--EDIT a Contact by id (EDIT) (User).
+    @PutMapping("/{id}") //--EDIT a Contact by id (EDIT) (User).
     public Contact editContact(@RequestBody Contact contact, @PathVariable int id ){
-        contact.setId(id);
-        return contactService.editContact(contact);
+        return contactService.editContact(contact, id);
     }
 
-    @DeleteMapping("/{contact}") //--DELETE a Contact by id (EDIT) (User).
-    public Contact deleteContact(@PathVariable int id){
+    @DeleteMapping("/{id}") //--DELETE a Contact by id (EDIT) (User).
+    public String deleteContact(@PathVariable int id){
         return contactService.deleteContact(id);
     }
 
