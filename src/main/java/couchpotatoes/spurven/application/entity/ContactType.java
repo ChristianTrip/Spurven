@@ -20,8 +20,11 @@ import java.util.List;
 public class ContactType {
 
     @Id
-    /*@GeneratedValue(strategy = GenerationType.IDENTITY)*/
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(length = 255,nullable = false)
+    private String type;
 
     @OneToMany(mappedBy = "contactType", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     List<Contact> contacts = new ArrayList<>();
