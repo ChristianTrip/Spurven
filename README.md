@@ -24,7 +24,7 @@ Read = Get.
 Update = PUT.
 Delete = Delete.
 
-## users
+## Users
 | Method    | Url                  | Description | Sample Valid Request Body |
 |-----------|----------------------|-------------|---------------------------|
 | GET       | users                | Get all     |                           |
@@ -33,14 +33,14 @@ Delete = Delete.
 | PUT       | /username/{username} | Update      |                           |
 | DELETE    |                      | Delete      | Ingen Delete              |
 |           |                      |             |                           |
-| TEST      | Postman              |             |                           |
+| TEST      | Postman              | Done        |                           |
 | Unit test | UserService          |             |                           |
 | Unit test | UserWithRoles        |             |                           |
 | Unit test |                      |             |                           |
 
 
 
-## contact
+## Contact
 | Method     | Url                   | Description | Sample Valid Request Body |
 |------------|-----------------------|-------------|---------------------------|
 | GET        | contacts              | Get all     |                           |
@@ -49,9 +49,20 @@ Delete = Delete.
 | PUT        | /contact/{contact_id} | Update      |                           |
 | DELETE     | /contact/{contact_id} | Delete      |                           |
 |            |                       |             |                           |
-| TEST       | Postman               |             |                           |
+| TEST       | Postman               | Done        |                           |
 | Unit test  | ContactService        |             |                           |
 | Unit test  | ContactRepository     |             |                           |
 
 
-
+## Event
+| Method     | Url               | Description | Sample Valid Request Body |
+|------------|-------------------|-------------|---------------------------|
+| GET        | events            | Get all     |                           |
+| GET        | /event/{id}       | Get all     |                           |
+| POST       | /event/{id}       | Create      |                           |
+| PUT        | /event/{id}       | Update      |                           |
+| DELETE     | /event/{id}       | Delete      |                           |
+|            |                   |             |                           |
+| TEST       | Postman           | Done        |                           |
+| Unit test  | ContactService    |             |                           |
+| Unit test  | ContactRepository |             |                           |
