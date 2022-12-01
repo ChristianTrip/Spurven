@@ -28,6 +28,10 @@ public class Contact {
     private String phone;
     @Column(length = 255,nullable = false)
     private String email;
+    /*@Column(length = 255,nullable = false)*/
+    @ManyToOne
+    /*@JoinColumn(name = "typeIdj")*/
+    private ContactType contactType;
 
     //---------------Fields / attribute.
 
