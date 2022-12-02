@@ -1,7 +1,9 @@
 package couchpotatoes.spurven.application.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,6 +31,8 @@ public class Contact {
     @Column(length = 255,nullable = false)
     private String email;
     /*@Column(length = 255,nullable = false)*/
+
+    @JsonManagedReference
     @ManyToOne
     /*@JoinColumn(name = "typeIdj")*/
     private ContactType contactType;

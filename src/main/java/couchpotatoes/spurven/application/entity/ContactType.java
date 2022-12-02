@@ -1,6 +1,8 @@
 package couchpotatoes.spurven.application.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +16,6 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_NULL)
 //---------------Lombok.
 @Entity
 public class ContactType {
@@ -26,7 +27,8 @@ public class ContactType {
     @Column(length = 255,nullable = false)
     private String type;
 
-    @OneToMany(mappedBy = "contactType", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonBackReference
+    @OneToMany(mappedBy = "contactType", fetch = FetchType.LAZY)
     List<Contact> contacts = new ArrayList<>();
 
 }
