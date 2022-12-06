@@ -1,6 +1,7 @@
 package couchpotatoes.spurven.application.api;
 
 
+import couchpotatoes.spurven.application.dto.ContactRequest;
 import couchpotatoes.spurven.application.entity.Contact;
 import couchpotatoes.spurven.application.service.ContactService;
 import org.springframework.web.bind.annotation.*;
@@ -28,8 +29,8 @@ public class ContactController {
     }
 
     @PostMapping("/") //--CREATE a Contact by id (CREATE) (User).
-    public Contact createContact(@RequestBody Contact contact){
-        return contactService.createContact(contact);
+    public void createContact(@RequestBody ContactRequest contactRequest){
+        System.out.println(contactService.createContact(contactRequest.getName(), contactRequest.getPhone(), contactRequest.getEmail(), contactRequest.getContactTypeId()));
     }
 
     @PutMapping("/{id}") //--EDIT a Contact by id (EDIT) (User).

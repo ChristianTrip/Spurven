@@ -14,15 +14,14 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 //---------------Lombok.
-@Entity //-- Maven -- Et object som vi skal burger i DB-tabel. Fortæller Der skal laves en table af samme navn some object.
+@Entity
 public class Contact {
     //---------------Fields / attribute.
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    int id;
 
     @Column(length = 255,nullable = false)
     private String name;
@@ -35,8 +34,7 @@ public class Contact {
     @JsonManagedReference
     @ManyToOne
     /*@JoinColumn(name = "typeIdj")*/
-    private ContactType contactType;
-
+    ContactType contactType;
     //---------------Fields / attribute.
 
 
@@ -46,8 +44,17 @@ public class Contact {
     //---------------Reservation class.
     //---------------Reservation class.
 
+
     //---------------Constructor.
+    public Contact(String name, String phone, String email, ContactType contactType) {
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.contactType = contactType;
+    }
     //---------------Constructor.
+
+
 
 
 }
