@@ -31,4 +31,11 @@ public class ContactType {
     @OneToMany(mappedBy = "contactType", fetch = FetchType.LAZY)
     List<Contact> contacts = new ArrayList<>();
 
+    //not necessary at this point in the development process
+    /*public void addContactType(ContactType contactType){
+        contacts.add(contactType);
+    }*/
+    public ContactType(String type) {
+        this.type = type;
+    }
 }

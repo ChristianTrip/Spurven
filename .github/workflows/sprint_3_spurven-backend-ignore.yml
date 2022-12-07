@@ -6,7 +6,7 @@ name: Build and deploy JAR app to Azure Web App - Spurven-Backend
 on:
   push:
     branches-ignore:
-      - sprint_1
+      - sprint_2
   workflow_dispatch:
 
 jobs:
