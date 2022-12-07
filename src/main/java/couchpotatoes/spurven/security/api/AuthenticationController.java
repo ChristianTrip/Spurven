@@ -2,7 +2,7 @@ package couchpotatoes.spurven.security.api;
 
 import couchpotatoes.spurven.security.dto.LoginRequest;
 import couchpotatoes.spurven.security.dto.LoginResponse;
-import couchpotatoes.spurven.security.entity.UserWithRoles;
+import couchpotatoes.spurven.security.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +25,7 @@ import static java.util.stream.Collectors.joining;
 
 @RestController
 @CrossOrigin
-@RequestMapping("auth/")
+@RequestMapping("auth")
 public class AuthenticationController {
 
   @Value("${app.token-issuer}")
@@ -42,7 +42,7 @@ public class AuthenticationController {
     this.authenticationManager = authenticationManager;
   }
 
-  @PostMapping("login")
+  @PostMapping("/login")
   public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request) {
     System.out.println(request.getUsername());
     System.out.println(request.getPassword());
@@ -50,7 +50,7 @@ public class AuthenticationController {
       UsernamePasswordAuthenticationToken uat = new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword());
       Authentication authentication = authenticationManager.authenticate(uat);
 
-      UserWithRoles user = (UserWithRoles) authentication.getPrincipal();
+      User user = (User) authentication.getPrincipal();
       Instant now = Instant.now();
       long expiry = tokenExpiration;
       String scope = authentication.getAuthorities().stream()

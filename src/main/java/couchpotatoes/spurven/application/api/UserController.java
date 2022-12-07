@@ -1,7 +1,7 @@
 package couchpotatoes.spurven.application.api;
 
-import couchpotatoes.spurven.application.entity.User;
 import couchpotatoes.spurven.application.service.UserService;
+import couchpotatoes.spurven.security.entity.User;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
