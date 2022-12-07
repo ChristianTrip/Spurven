@@ -25,9 +25,7 @@ import java.util.stream.Collectors;
 @ToString
 @AllArgsConstructor
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "DISCRIMINATOR_TYPE")
-public class UserWithRoles implements UserDetails {
+public class User implements UserDetails {
 
     @Transient
     private static final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -39,6 +37,15 @@ public class UserWithRoles implements UserDetails {
     //60 = length of a bcrypt encoded password
     @Column(nullable = false, length = 60)
     String password;
+
+    @Column(length = 255)
+    private String firstName;
+    @Column(length = 255)
+    private String lastName;
+    @Column(length = 255)
+    private String email;
+    @Column(length = 255)
+    private String phone;
 
     private boolean enabled = true;
 
@@ -54,17 +61,27 @@ public class UserWithRoles implements UserDetails {
     @CollectionTable(name = "security_role")
     List<Role> roles = new ArrayList<>();
 
-    public UserWithRoles() {}
+    public User() {}
 
 
    // We will use this constructor when/if users must be created via an HTTP-request
-    public UserWithRoles(UserWithRolesRequest body) {
+    public User(UserWithRolesRequest body) {
         this.username = body.getUsername();
         this.setPassword(body.getPassword());
     }
 
-    public UserWithRoles(String user, String password){
+    public User(String user, String password){
         this.username = user;
+        setPassword(password);
+    }
+
+    public User(String username, String password, String firstName, String lastName, String email, String phone) {
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
         setPassword(password);
     }
 
