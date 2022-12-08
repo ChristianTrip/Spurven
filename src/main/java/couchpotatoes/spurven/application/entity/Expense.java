@@ -1,38 +1,47 @@
 package couchpotatoes.spurven.application.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+
+
 //---------------Lombok.
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@ToString
 //---------------Lombok.
-@Entity
-public class Contact {
+
+@Entity //-- Maven -- Et object som vi skal burger i DB-tabel. Fortæller Der skal laves en table af samme navn some object.
+public class Expense {
     //---------------Fields / attribute.
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    private int id;
+
+    private String description;
+
+    private String category;
+
+    private Double amount;
 
     @Column(length = 255,nullable = false)
-    private String name;
+    @JsonFormat(pattern = "yyyy-MM-dd", shape = JsonFormat.Shape.STRING)
+    private LocalDate invoiceStart;
     @Column(length = 255,nullable = false)
-    private String phone;
-    @Column(length = 255,nullable = false)
-    private String email;
-    /*@Column(length = 255,nullable = false)*/
+    @JsonFormat(pattern = "yyyy-MM-dd", shape = JsonFormat.Shape.STRING)
+    private LocalDate invoiceEnd;
 
-    @JsonManagedReference
-    @ManyToOne
-    /*@JoinColumn(name = "typeIdj")*/
-    ContactType contactType;
+
     //---------------Fields / attribute.
 
 
@@ -42,17 +51,8 @@ public class Contact {
     //---------------Reservation class.
     //---------------Reservation class.
 
-
     //---------------Constructor.
-    public Contact(String name, String phone, String email, ContactType contactType) {
-        this.name = name;
-        this.phone = phone;
-        this.email = email;
-        this.contactType = contactType;
-    }
     //---------------Constructor.
-
-
 
 
 }

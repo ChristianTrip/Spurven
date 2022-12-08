@@ -20,7 +20,7 @@ public class EventController {
     }
     @GetMapping()
     private List<Event> getAllEvents(){
-        return eventService.getAllContacts();
+        return eventService.getAllEvents();
     }
     @GetMapping("/{id}")
     public Event getEvent(@PathVariable int id){
