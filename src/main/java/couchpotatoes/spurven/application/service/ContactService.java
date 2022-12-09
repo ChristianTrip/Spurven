@@ -1,6 +1,7 @@
 package couchpotatoes.spurven.application.service;
 
 
+import couchpotatoes.spurven.application.dto.ContactRequest;
 import couchpotatoes.spurven.application.entity.Contact;
 import couchpotatoes.spurven.application.entity.ContactType;
 import couchpotatoes.spurven.application.repository.ContactRepository;
@@ -34,14 +35,21 @@ public class ContactService {
         ContactType contactType = contactTypeRepository.findById(contactTypeId).orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "ContactType with this id doesn't exist"));
         Contact contact = new Contact(name, phone, email, contactType);
         contactRepository.save(contact);
+        
         return contact;
     }
 
-    public Contact editContact(Contact body, int id) {
-        Contact contact = getContact(id);
-        contact.setName(body.getName());
-        contact.setPhone(body.getPhone());
-        contact.setEmail(body.getEmail());
+    public Contact editContact(ContactRequest contactRequest, int id) {
+        Contact contact = contactRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Contact with this id doesn't exist"));
+        contact.setName(contactRequest.getName());
+        contact.setPhone(contactRequest.getPhone());
+        contact.setEmail(contactRequest.getEmail());
+
+        int contactTypeId = contactRequest.getContactTypeId();
+        ContactType contactType = contactTypeRepository.findById(contactTypeId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Contact with this id doesn't exist"));
+        contact.setContactType(contactType);
+
         return contactRepository.save(contact);
     }
     public String deleteContact(int id) {

@@ -64,6 +64,7 @@ public class SecurityConfig {
 
     http.authorizeHttpRequests((authorize) -> authorize
             .antMatchers(HttpMethod.POST, "/auth/login").permitAll()
+
               /*.antMatchers(HttpMethod.GET, "/users/**").hasAuthority("ADMIN")
               .antMatchers(HttpMethod.GET, "/contacts").hasAuthority("ADMIN")
               .antMatchers(HttpMethod.GET, "/expenses").hasAuthority("ADMIN")
