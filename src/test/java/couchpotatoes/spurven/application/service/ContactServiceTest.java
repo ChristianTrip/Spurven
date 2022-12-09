@@ -50,7 +50,7 @@ class ContactServiceTest {
     }
 
     /*@Test*/
-    void createContact() {
+    /*void createContact() {
         ContactType contactType = new ContactType("something");
         contactType.setId(50);
         Contact contact = new Contact("John","40404040","john@mail.something",contactType);
@@ -62,10 +62,10 @@ class ContactServiceTest {
 
         assertEquals("John", createdContact.getName());
         assertEquals(50, createdContact.getContactType().getId());
-    }
+    }*/
 
     /*@Test*/
-    void editContact() {
+    /*void editContact() {
         Contact contact = new Contact("John","40404040","john@mail.something",new ContactType());
         contact.setId(50);
 
@@ -75,5 +75,5 @@ class ContactServiceTest {
         Contact editedContact = contactServ.editContact(contact,50);
 
         assertEquals(50,editedContact.getId());
-    }
+    }*/
 }
