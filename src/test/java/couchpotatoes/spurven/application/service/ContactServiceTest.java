@@ -1,5 +1,6 @@
 package couchpotatoes.spurven.application.service;
 
+import couchpotatoes.spurven.application.dto.ContactRequest;
 import couchpotatoes.spurven.application.entity.Contact;
 import couchpotatoes.spurven.application.entity.ContactType;
 import couchpotatoes.spurven.application.repository.ContactRepository;
@@ -49,8 +50,8 @@ class ContactServiceTest {
         assertEquals("John",contacts.get(0).getName());
     }
 
-    /*@Test*/
-    /*void createContact() {
+    @Test
+    void createContact() {
         ContactType contactType = new ContactType("something");
         contactType.setId(50);
         Contact contact = new Contact("John","40404040","john@mail.something",contactType);
@@ -62,18 +63,23 @@ class ContactServiceTest {
 
         assertEquals("John", createdContact.getName());
         assertEquals(50, createdContact.getContactType().getId());
-    }*/
+    }
 
-    /*@Test*/
-    /*void editContact() {
+    @Test
+    void editContact() {
         Contact contact = new Contact("John","40404040","john@mail.something",new ContactType());
         contact.setId(50);
+        ContactType contactType = new ContactType("something");
+        contactType.setId(50);
 
         Mockito.when(contactRepo.save(any(Contact.class))).thenReturn(contact);
         Mockito.when(contactRepo.findById(any())).thenReturn(Optional.of(contact));
+        Mockito.when(contactTypeRepo.findById(any())).thenReturn(Optional.of(contactType));
 
-        Contact editedContact = contactServ.editContact(contact,50);
+
+        ContactRequest request = new ContactRequest("John","40404040","john@mail.something",50);
+        Contact editedContact = contactServ.editContact(request,50);
 
         assertEquals(50,editedContact.getId());
-    }*/
+    }
 }
