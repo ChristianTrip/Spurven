@@ -32,30 +32,31 @@ class UserServiceTest {
 
     @Test
     void getUserById() {
-/*
 
-        User u1 = new User("Charles","Darwin","cd@test.dk","50505050");
+
+        User u1 = new User();
         u1.setUsername("charlesdarwin");
         Mockito.when(userRepo.findById("charlesdarwin")).thenReturn(Optional.of(u1));
 
         User foundUser = userServ.getUserById("charlesdarwin");
         assertEquals("charlesdarwin",foundUser.getUsername());
-*/
+
 
     }
 
     @Test
     void getAllUsers() {
-        /*Mockito.when(userRepo.findAll()).thenReturn(List.of(
-                new User("Charles","Darwin","cd@test.dk","50505050"),
-                new User("Emma", "Wedgwood", "ew@test.dk","60606060")
+        Mockito.when(userRepo.findAll()).thenReturn(List.of(
+                new User("username","password","Charles","Darwin","cd@test.dk","50505050"),
+                new User("username","password","Emma", "Wedgwood", "ew@test.dk","60606060")
         ));
 
         List<User> foundUsers = userServ.getAllUsers();
 
         assertEquals(2, foundUsers.size());
         assertEquals("Charles",foundUsers.get(0).getFirstName());
-        */
+        assertEquals("Wedgwood",foundUsers.get(1).getLastName());
+
     }
 
     @Test
