@@ -29,8 +29,9 @@ public class ContactController {
     }
 
     @PostMapping("/") //--CREATE a Contact by id (CREATE) (User).
-    public void createContact(@RequestBody ContactRequest contactRequest){
-        contactService.createContact(contactRequest.getName(), contactRequest.getPhone(), contactRequest.getEmail(), contactRequest.getContactTypeId());
+
+    public Contact createContact(@RequestBody ContactRequest contactRequest){
+        return contactService.createContact(contactRequest.getName(), contactRequest.getPhone(), contactRequest.getEmail(), contactRequest.getContactTypeId());
     }
 
     @PutMapping(path = "/{id}") //--EDIT a Contact by id (EDIT) (User).
