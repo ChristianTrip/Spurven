@@ -31,10 +31,12 @@ public class ContactService {
         return contactRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Contact not found"));
     }
 
-    public void createContact(String name, String phone, String email, int contactTypeId) {
+    public Contact createContact(String name, String phone, String email, int contactTypeId) {
         ContactType contactType = contactTypeRepository.findById(contactTypeId).orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "ContactType with this id doesn't exist"));
         Contact contact = new Contact(name, phone, email, contactType);
         contactRepository.save(contact);
+        
+        return contact;
     }
 
     public Contact editContact(ContactRequest contactRequest, int id) {
