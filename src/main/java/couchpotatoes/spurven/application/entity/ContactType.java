@@ -13,7 +13,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+/*@ToString*/
 //---------------Lombok.
 @Entity
 public class ContactType {

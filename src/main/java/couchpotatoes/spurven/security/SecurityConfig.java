@@ -45,8 +45,8 @@ public class SecurityConfig {
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http
-            //.cors().and()
-            //.csrf((csrf) -> csrf.ignoringAntMatchers("/api/auth/login"))
+            .cors().and()
+            .csrf((csrf) -> csrf.ignoringAntMatchers("/auth/login"))
             .csrf().disable()
             .httpBasic(Customizer.withDefaults())
             //.oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
@@ -61,12 +61,12 @@ public class SecurityConfig {
             .jwtAuthenticationConverter(authenticationConverter());
 
     http.authorizeHttpRequests((authorize) -> authorize
-            .antMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
-            //.antMatchers("/", "/**").permitAll()
-            .antMatchers("/error").permitAll());
+            .antMatchers(HttpMethod.POST, "/auth/login").permitAll()
+            .antMatchers("/", "/**").permitAll()
+            .antMatchers("/error").permitAll()
 //                .antMatchers(HttpMethod.GET, "/api/demouser/user-only").hasAuthority("USER")
 //                .antMatchers(HttpMethod.GET, "/api/demouser/admin-only").hasAuthority("ADMIN")
-//                .anyRequest().authenticated());
+                .anyRequest().authenticated());
 
     return http.build();
   }
