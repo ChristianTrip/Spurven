@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -25,7 +26,8 @@ public class ExpenseService {
         return expenseRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Expense not found"));
     }
-    public Expense createExpense(Expense expense) {
+    public Expense createExpense(String description, String category, double amount, LocalDate invoiceStart, LocalDate invoiceEnd) {
+        Expense expense = new Expense(description, category, amount, invoiceStart, invoiceEnd);
         return expenseRepository.save(expense);
     }
     public Expense editExpense(Expense body, int id) {

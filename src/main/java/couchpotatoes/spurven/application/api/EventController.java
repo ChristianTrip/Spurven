@@ -1,6 +1,7 @@
 package couchpotatoes.spurven.application.api;
 
 
+import couchpotatoes.spurven.application.dto.EventRequest;
 import couchpotatoes.spurven.application.entity.Event;
 import couchpotatoes.spurven.application.service.EventService;
 import org.springframework.web.bind.annotation.*;
@@ -27,12 +28,12 @@ public class EventController {
         return eventService.getEvent(id);
     }
     @PostMapping("/")
-    public Event createEvent(@RequestBody Event event){
-        return eventService.createEvent(event);
+    public Event createEvent(@RequestBody EventRequest eventRequest){
+        return eventService.createEvent(eventRequest.getTitle(), eventRequest.getDescription(), eventRequest.getStart(), eventRequest.getEnd());
     }
     @PutMapping("/{id}")
-    public Event editEvent(@RequestBody Event event, @PathVariable int id){
-        return eventService.editEvent(event, id);
+    public Event editEvent(@RequestBody EventRequest eventRequest, @PathVariable int id){
+        return eventService.editEvent(eventRequest, id);
     }
 
     @DeleteMapping("/{id}")

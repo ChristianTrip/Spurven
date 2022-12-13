@@ -4,20 +4,15 @@ package couchpotatoes.spurven.application.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 //---------------Lombok.
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@Builder
 //---------------Lombok.
 
 @Entity //-- Maven -- Et object som vi skal burger i DB-tabel. Fortæller Der skal laves en table af samme navn some object.
@@ -33,16 +28,20 @@ public class Event {
     private String description;
 
     @Column(length = 255,nullable = false)
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm", shape = JsonFormat.Shape.STRING)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm", shape = JsonFormat.Shape.STRING)
     private LocalDateTime start;
     @Column(length = 255,nullable = false)
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm", shape = JsonFormat.Shape.STRING)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm", shape = JsonFormat.Shape.STRING)
     private LocalDateTime end;
 
-    @CreationTimestamp
-    LocalDateTime created;
-    @UpdateTimestamp
-    LocalDateTime edited;
+    public Event(String title, String description, LocalDateTime start, LocalDateTime end) {
+        this.title = title;
+        this.description = description;
+        this.start = start;
+        this.end = end;
+
+    }
+
     //---------------Fields / attribute.
 
 

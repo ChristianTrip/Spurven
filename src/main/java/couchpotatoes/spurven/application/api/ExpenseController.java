@@ -2,6 +2,7 @@ package couchpotatoes.spurven.application.api;
 
 
 
+import couchpotatoes.spurven.application.dto.ExpenseRequest;
 import couchpotatoes.spurven.application.entity.Expense;
 import couchpotatoes.spurven.application.service.ExpenseService;
 import org.springframework.web.bind.annotation.*;
@@ -27,8 +28,9 @@ public class ExpenseController {
     }
 
     @PostMapping("/") //--CREATE an Expense by id (CREATE) (User).
-    public Expense createExpense(@RequestBody Expense expense){
-        return expenseService.createExpense(expense);
+    public Expense createExpense(@RequestBody ExpenseRequest body){
+        return expenseService.createExpense(body.getDescription(), body.getCategory(), body.getAmount(),body.getInvoiceStart(), body.getInvoiceEnd());
+
     }
 
     @PutMapping("/{id}") //--EDIT an Expense by id (EDIT) (User).
