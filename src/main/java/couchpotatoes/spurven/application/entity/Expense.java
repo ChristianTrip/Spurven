@@ -41,6 +41,13 @@ public class Expense {
     @JsonFormat(pattern = "yyyy-MM-dd", shape = JsonFormat.Shape.STRING)
     private LocalDate invoiceEnd;
 
+    public Expense(String description, String category, Double amount, LocalDate invoiceStart, LocalDate invoiceEnd) {
+        this.description = description;
+        this.category = category;
+        this.amount = amount;
+        this.invoiceStart = invoiceStart;
+        this.invoiceEnd = invoiceEnd;
+    }
 
     //---------------Fields / attribute.
 

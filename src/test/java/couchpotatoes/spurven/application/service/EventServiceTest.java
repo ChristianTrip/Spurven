@@ -1,19 +1,14 @@
 package couchpotatoes.spurven.application.service;
 
-import couchpotatoes.spurven.application.entity.Event;
 import couchpotatoes.spurven.application.repository.EventRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.List;
-
 import static org.mockito.ArgumentMatchers.any;
-import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 class EventServiceTest {
@@ -29,7 +24,7 @@ class EventServiceTest {
         eventServ = new EventService(eventRepo);
     }
 
-
+/*
     @Test
     void getAllContacts() {
         Mockito.when(eventRepo.findAll()).thenReturn(List.of(
@@ -54,7 +49,7 @@ class EventServiceTest {
         assertEquals(60,createdEvent.getId());
         assertEquals("Fun times",createdEvent.getTitle());
     }
-
+*/
     @Test
     void editEvent() {
     }
